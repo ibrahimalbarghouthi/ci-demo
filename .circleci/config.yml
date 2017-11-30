@@ -24,8 +24,6 @@ jobs:
     steps:
       - checkout
 
-      - run: echo ‘/usr/lib/postgresql/9.3/bin/:$PATH’ >> $BASH_ENV
-
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -40,8 +38,8 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "project.clj" }}
 
-      - run: /usr/lib/postgresql/9.3/bin/psql -U bob -d test_db -a -f bob.sql
-      - run: psql -U bob -d test_db -a -f bob.sql
+      - run:
+        command: sudo -u postgres psql -U bob -d test_db -a -f bob.sql
 
       # run tests!
       - run: lein test
