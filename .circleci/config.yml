@@ -39,7 +39,7 @@ jobs:
           key: v1-dependencies-{{ checksum "project.clj" }}
 
       - run:
-        command: sudo -u postgres psql -U bob -d test_db -a -f bob.sql
+          command: sudo -u postgres psql -U bob -d test_db -a -f bob.sql
 
       # run tests!
       - run: lein test
