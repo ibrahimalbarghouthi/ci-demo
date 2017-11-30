@@ -24,6 +24,8 @@ jobs:
     steps:
       - checkout
 
+      - run: apt-get install postgresql
+
       # Download and cache dependencies
       - restore_cache:
           keys:
