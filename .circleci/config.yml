@@ -38,10 +38,10 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "project.clj" }}
 
-      # - run:
-      #     name: Set up DB
-      #     command: |
-      #       psql -U bob -d test_db -a -f bob.sql
+      - run:
+          name: Set up DB
+          command: |
+            psql -U bob -d test_db -a -f bob.sql
 
       # run tests!
       - run: lein test
