@@ -13,6 +13,10 @@ jobs:
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       - image: circleci/postgres:9.3
+        environment:
+        - POSTGRES_USER=bob_db
+        - POSTGRES_DB=cards_bob
+
 
     working_directory: ~/repo
 
@@ -23,8 +27,6 @@ jobs:
 
     steps:
       - checkout
-
-      - run: apt-get install postgresql
 
       # Download and cache dependencies
       - restore_cache:
@@ -40,8 +42,8 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "project.clj" }}
 
-      - run:
-          command: sudo -u postgres psql -U bob -d test_db -a -f bob.sql
+      # - run:
+          # command: sudo -u postgres psql -U bob -d test_db -a -f bob.sql
 
       # run tests!
       - run: lein test
