@@ -1,0 +1,4 @@
+test:
+  db_connection:
+    db: cards_bob
+    username: bob_db

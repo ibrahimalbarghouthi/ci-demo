@@ -3,7 +3,10 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.8.0"]]
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [korma "0.4.3"]
+                 [org.postgresql/postgresql "42.0.0"]
+                 [clj-yaml "0.4.0"]]
   :main ^:skip-aot ci-demo.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
