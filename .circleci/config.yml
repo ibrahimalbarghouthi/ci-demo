@@ -26,6 +26,8 @@ jobs:
       JVM_OPTS: -Xmx3200m
 
     steps:
+      - run: echo ‘/usr/lib/postgresql/9.3/bin/:$PATH’ >> $BASH_ENV
+
       - checkout
 
       # Download and cache dependencies
@@ -43,7 +45,7 @@ jobs:
           key: v1-dependencies-{{ checksum "project.clj" }}
 
       # - run:
-          # command: sudo -u postgres psql -U bob -d test_db -a -f bob.sql
+          command: sudo -u postgres psql -p 5433 -U bob -d test_db -a -f bob.sql
 
       # run tests!
       - run: lein test
