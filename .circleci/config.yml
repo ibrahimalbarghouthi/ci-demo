@@ -26,8 +26,6 @@ jobs:
       JVM_OPTS: -Xmx3200m
 
     steps:
-      - run: echo ‘/usr/lib/postgresql@9.3/bin/:$PATH’ >> $BASH_ENV
-
       - checkout
 
       # Download and cache dependencies
@@ -44,6 +42,7 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "project.clj" }}
 
+      - run: sudo apt-get install postgresql-client
       - run:
           command: psql -h localhost -p 5432 -U bob -d test_db -a -f bob.sql
 
