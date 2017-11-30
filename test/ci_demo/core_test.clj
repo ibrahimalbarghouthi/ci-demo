@@ -7,13 +7,13 @@
             [clj-yaml.core :as yaml]
             [clojure.java.jdbc :as j]))
 
-;; (let [yaml-file (slurp "./config/db.yml")
-;;       parsed (yaml/parse-string yaml-file)
-;;       db-config (-> parsed :test :db_connection)]
-;;   (defdb db (postgres (merge db-config {:user (:username db-config)}))))
-;;
+(let [yaml-file (slurp "./config/db.yml")
+      parsed (yaml/parse-string yaml-file)
+      db-config (-> parsed :test :db_connection)]
+  (defdb db (postgres (merge db-config {:user (:username db-config)}))))
+
 
 
 (deftest a-test
   (testing "FIXME, I fail."
-    (is (= 1 #_(first (vals (first (exec-raw ["SELECT 1" ] :results)))) 1))))
+    (is (= (first (vals (first (exec-raw ["SELECT 1" ] :results)))) 1))))
