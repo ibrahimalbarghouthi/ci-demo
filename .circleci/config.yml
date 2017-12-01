@@ -18,7 +18,7 @@ jobs:
         - POSTGRES_DB=cards_bob
 
 
-    working_directory: ~/repo
+    working_directory: ~/repo/bob
 
     environment:
       LEIN_ROOT: "true"
